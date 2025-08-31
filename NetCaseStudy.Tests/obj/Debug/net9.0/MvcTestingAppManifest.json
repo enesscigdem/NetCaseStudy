@@ -1,0 +1,6 @@
+{
+  "NetCaseStudy.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/enescigdem\/RiderProjects\/NetCaseStudy\/NetCaseStudy.Api",
+  "NetCaseStudy.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/enescigdem\/RiderProjects\/NetCaseStudy\/NetCaseStudy.Application",
+  "NetCaseStudy.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/enescigdem\/RiderProjects\/NetCaseStudy\/NetCaseStudy.Domain",
+  "NetCaseStudy.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/enescigdem\/RiderProjects\/NetCaseStudy\/NetCaseStudy.Infrastructure"
+}
