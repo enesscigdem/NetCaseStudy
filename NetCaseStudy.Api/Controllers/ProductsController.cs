@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NetCaseStudy.Api.Filters;
 using NetCaseStudy.Application.DTOs;
 using NetCaseStudy.Application.Features.Products.Commands;
 using NetCaseStudy.Application.Features.Products.Queries;
@@ -20,6 +21,7 @@ public class ProductsController : ControllerBase
 
     [HttpGet]
     [AllowAnonymous]
+    [ETagFilter] 
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<PagedResult<ProductDto>>> Get(
         int page = 1,
@@ -34,6 +36,24 @@ public class ProductsController : ControllerBase
         var result = await _mediator.Send(query);
         return Ok(result);
     }
+    
+    [HttpGet("cursor")]
+    [AllowAnonymous]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetWithCursor(
+        int pageSize = 20,
+        string? cursor = null,
+        string? search = null,
+        decimal? minPrice = null,
+        decimal? maxPrice = null,
+        string? sortBy = "id",
+        bool desc = false)
+    {
+        var query = new ListProductsCursorQuery(pageSize, cursor, search, minPrice, maxPrice, sortBy, desc);
+        var result = await _mediator.Send(query);
+        return Ok(result);
+    }
+
 
     [HttpGet("{id:int}")]
     [AllowAnonymous]

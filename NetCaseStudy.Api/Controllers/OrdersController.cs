@@ -15,12 +15,15 @@ public class OrdersController : ControllerBase
 {
     private readonly IMediator _mediator;
     private readonly ICurrentUserService _currentUser;
-    public OrdersController(IMediator mediator, ICurrentUserService currentUser)
+    private readonly IAuthorizationService _authorization;
+
+    public OrdersController(IMediator mediator, ICurrentUserService currentUser, IAuthorizationService authorization)
     {
         _mediator = mediator;
         _currentUser = currentUser;
+        _authorization = authorization;
     }
-
+    
     [HttpGet]
     [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -39,18 +42,14 @@ public class OrdersController : ControllerBase
     [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<OrderDto>> GetById(int id)
+    public async Task<IActionResult> GetById(int id)
     {
         var order = await _mediator.Send(new GetOrderByIdQuery(id));
-        if (order is null)
-        {
-            return NotFound();
-        }
-        var isAdmin = User.IsInRole("Admin");
-        if (!isAdmin && order.UserId != _currentUser.UserId)
-        {
-            return Forbid();
-        }
+        if (order is null) return NotFound();
+
+        var authz = await _authorization.AuthorizeAsync(User, order, "ViewOrder");
+        if (!authz.Succeeded) return Forbid();
+
         return Ok(order);
     }
 

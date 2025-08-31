@@ -9,17 +9,27 @@ public record DeleteProductCommand(int Id) : IRequest<bool>;
 public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, bool>
 {
     private readonly IApplicationDbContext _db;
-    public DeleteProductCommandHandler(IApplicationDbContext db)
+
+    private readonly ICacheService _cache;
+
+    public DeleteProductCommandHandler(IApplicationDbContext db, ICacheService cache)
     {
         _db = db;
+        _cache = cache;
     }
-    public async Task<bool> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
+
+    public async Task<bool> Handle(DeleteProductCommand request, CancellationToken ct)
     {
-        var entity = await _db.Products.FirstOrDefaultAsync(p => p.Id == request.Id && !p.IsDeleted, cancellationToken);
-        if (entity is null)
-            return false;
-        entity.IsDeleted = true;
-        await _db.SaveChangesAsync(cancellationToken);
+        var product = await _db.Products.FirstOrDefaultAsync(p => p.Id == request.Id && !p.IsDeleted, ct);
+        if (product is null) return false;
+
+        product.IsDeleted = true;
+        product.IsActive = false;
+
+        await _db.SaveChangesAsync(ct);
+
+        await _cache.RemoveByPrefixAsync("products:");
+
         return true;
     }
 }

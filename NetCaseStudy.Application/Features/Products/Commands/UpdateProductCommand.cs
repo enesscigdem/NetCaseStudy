@@ -12,28 +12,29 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
 {
     private readonly IApplicationDbContext _db;
     private readonly IMapper _mapper;
-    public UpdateProductCommandHandler(IApplicationDbContext db, IMapper mapper)
+
+    private readonly ICacheService _cache;
+
+    public UpdateProductCommandHandler(IApplicationDbContext db, IMapper mapper, ICacheService cache)
     {
         _db = db;
         _mapper = mapper;
+        _cache = cache;
     }
-    public async Task<bool> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
+
+    public async Task<bool> Handle(UpdateProductCommand request, CancellationToken ct)
     {
-        var entity = await _db.Products.FirstOrDefaultAsync(p => p.Id == request.Id && !p.IsDeleted, cancellationToken);
-        if (entity is null)
-        {
-            return false;
-        }
-        entity.Name = request.Request.Name;
-        entity.Price = request.Request.Price;
-        try
-        {
-            await _db.SaveChangesAsync(cancellationToken);
-            return true;
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            return false;
-        }
+        var product = await _db.Products.FirstOrDefaultAsync(p => p.Id == request.Id && !p.IsDeleted, ct);
+        if (product is null) return false;
+
+        product.Name = request.Request.Name;
+        product.Price = request.Request.Price;
+        product.IsActive = true;
+
+        await _db.SaveChangesAsync(ct);
+
+        await _cache.RemoveByPrefixAsync("products:");
+
+        return true;
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7z975bbLh5M=",
+  "dgSpecHash": "96IosQED4Wo=",
   "success": true,
   "projectFilePath": "/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Infrastructure/NetCaseStudy.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -54,6 +54,8 @@
     "/Users/enescigdem/.nuget/packages/microsoft.sqlserver.server/1.0.0/microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "/Users/enescigdem/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "/Users/enescigdem/.nuget/packages/mono.texttemplating/3.0.0/mono.texttemplating.3.0.0.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/pipelines.sockets.unofficial/2.2.8/pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/stackexchange.redis/2.9.11/stackexchange.redis.2.9.11.nupkg.sha512",
     "/Users/enescigdem/.nuget/packages/system.clientmodel/1.0.0/system.clientmodel.1.0.0.nupkg.sha512",
     "/Users/enescigdem/.nuget/packages/system.codedom/6.0.0/system.codedom.6.0.0.nupkg.sha512",
     "/Users/enescigdem/.nuget/packages/system.collections.immutable/7.0.0/system.collections.immutable.7.0.0.nupkg.sha512",
