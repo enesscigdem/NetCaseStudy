@@ -8,6 +8,7 @@
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.AssemblyInfoInputs.cache
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.AssemblyInfo.cs
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.csproj.CoreCompileInputs.cache
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.sourcelink.json
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseS.1EFC4A16.Up2Date
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.dll
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/refint/NetCaseStudy.Application.dll

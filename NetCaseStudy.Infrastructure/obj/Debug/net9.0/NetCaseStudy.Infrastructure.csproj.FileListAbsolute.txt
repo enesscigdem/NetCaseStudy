@@ -11,6 +11,7 @@
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Infrastructure/obj/Debug/net9.0/NetCaseStudy.Infrastructure.AssemblyInfoInputs.cache
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Infrastructure/obj/Debug/net9.0/NetCaseStudy.Infrastructure.AssemblyInfo.cs
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Infrastructure/obj/Debug/net9.0/NetCaseStudy.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Infrastructure/obj/Debug/net9.0/NetCaseStudy.Infrastructure.sourcelink.json
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Infrastructure/obj/Debug/net9.0/NetCaseS.199DD8DE.Up2Date
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Infrastructure/obj/Debug/net9.0/NetCaseStudy.Infrastructure.dll
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Infrastructure/obj/Debug/net9.0/refint/NetCaseStudy.Infrastructure.dll

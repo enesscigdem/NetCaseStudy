@@ -22,13 +22,10 @@ using NetCaseStudy.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog((ctx, lc) =>
-{
-    lc.ReadFrom.Configuration(ctx.Configuration);
-});
+builder.Host.UseSerilog((ctx, lc) => { lc.ReadFrom.Configuration(ctx.Configuration); });
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+                       ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -76,10 +73,12 @@ builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequir
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(NetCaseStudy.Application.DTOs.ProductDto).Assembly));
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssembly(typeof(NetCaseStudy.Application.DTOs.ProductDto).Assembly));
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
-builder.Services.AddValidatorsFromAssemblyContaining<NetCaseStudy.Application.Validators.CreateProductRequestValidator>();
+builder.Services
+    .AddValidatorsFromAssemblyContaining<NetCaseStudy.Application.Validators.CreateProductRequestValidator>();
 builder.Services.AddFluentValidationAutoValidation();
 
 builder.Services.AddApiVersioning(options =>
