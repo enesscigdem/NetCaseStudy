@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NetCaseStudy.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a0f0dd2cc5855022e5d78cc6a8c0bbeb06c9aef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce7237d87c266c4febf1d0a96e59fbff12c30171")]
 [assembly: System.Reflection.AssemblyProductAttribute("NetCaseStudy.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NetCaseStudy.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

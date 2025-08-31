@@ -1,4 +1,6 @@
 using System.Linq.Expressions;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using NetCaseStudy.Application.Abstractions;
 using NetCaseStudy.Domain.BaseModels;
@@ -6,7 +8,7 @@ using NetCaseStudy.Domain.Entities;
 
 namespace NetCaseStudy.Infrastructure.Persistence;
 
-public class AppDbContext : DbContext, IApplicationDbContext
+public class ApplicationDbContext : IdentityDbContext<IdentityUser, IdentityRole, string>, IApplicationDbContext
 {
     private readonly ICurrentUserService _currentUser;
 
@@ -14,7 +16,7 @@ public class AppDbContext : DbContext, IApplicationDbContext
     public DbSet<Order> Orders => Set<Order>();
     public DbSet<OrderItem> OrderItems => Set<OrderItem>();
 
-    public AppDbContext(DbContextOptions<AppDbContext> options, ICurrentUserService currentUser)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ICurrentUserService currentUser)
         : base(options)
     {
         _currentUser = currentUser;

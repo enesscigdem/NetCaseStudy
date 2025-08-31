@@ -27,7 +27,7 @@ builder.Host.UseSerilog((ctx, lc) => { lc.ReadFrom.Configuration(ctx.Configurati
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
                        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -69,7 +69,7 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
-builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<AppDbContext>());
+builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
 
@@ -105,7 +105,7 @@ builder.Services.AddRateLimiter(options =>
 
 builder.Services.AddHealthChecks();
 
-builder.Services.AddDbContext<AppDbContext>(o =>
+builder.Services.AddDbContext<ApplicationDbContext>(o =>
     o.UseSqlServer(connectionString, b => b.MigrationsAssembly("NetCaseStudy.Infrastructure")));
 
 builder.Services.AddControllers();

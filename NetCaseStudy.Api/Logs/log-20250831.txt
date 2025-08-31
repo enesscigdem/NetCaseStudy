@@ -237,3 +237,17 @@ Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'AspNetU
 ClientConnectionId:5722be8d-0858-40ce-8831-23fd9fc18bbc
 Error Number:208,State:1,Class:16
 2025-08-31 21:48:06.276 +03:00 [ERR] HTTP POST /api/v1/Auth/register responded 500 in 187.3745 ms
+2025-08-31 22:01:20.957 +03:00 [ERR] Failed executing DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Orders] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(max) NOT NULL,
+    [Status] int NOT NULL,
+    [IsDeleted] bit NOT NULL,
+    [IsActive] bit NOT NULL,
+    [RowVersion] rowversion NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [CreatedBy] nvarchar(max) NULL,
+    [ModifiedAt] datetime2 NULL,
+    [ModifiedBy] nvarchar(max) NULL,
+    CONSTRAINT [PK_Orders] PRIMARY KEY ([Id])
+);
