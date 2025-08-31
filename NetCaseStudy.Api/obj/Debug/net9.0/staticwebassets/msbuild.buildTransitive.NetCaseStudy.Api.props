@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/NetCaseStudy.Api.props" />
+</Project>

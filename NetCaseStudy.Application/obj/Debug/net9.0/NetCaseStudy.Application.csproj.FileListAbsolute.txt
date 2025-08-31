@@ -1,0 +1,15 @@
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/bin/Debug/net9.0/NetCaseStudy.Application.deps.json
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/bin/Debug/net9.0/NetCaseStudy.Application.dll
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/bin/Debug/net9.0/NetCaseStudy.Application.pdb
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/bin/Debug/net9.0/NetCaseStudy.Domain.dll
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/bin/Debug/net9.0/NetCaseStudy.Domain.pdb
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.csproj.AssemblyReference.cache
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.AssemblyInfoInputs.cache
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.AssemblyInfo.cs
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.csproj.CoreCompileInputs.cache
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseS.1EFC4A16.Up2Date
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.dll
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/refint/NetCaseStudy.Application.dll
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.pdb
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/obj/Debug/net9.0/ref/NetCaseStudy.Application.dll
