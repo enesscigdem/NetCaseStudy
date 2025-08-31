@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NetCaseStudy.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+336e91a8398e46528827d740a14c0de45d107eb2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69ba0fa78157bf8adf4a7bd7067bf04778c3acc4")]
 [assembly: System.Reflection.AssemblyProductAttribute("NetCaseStudy.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NetCaseStudy.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

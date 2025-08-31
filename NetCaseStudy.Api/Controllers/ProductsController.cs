@@ -20,7 +20,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    [AllowAnonymous]
+    [Authorize]
     [ETagFilter] 
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<PagedResult<ProductDto>>> Get(
@@ -38,7 +38,7 @@ public class ProductsController : ControllerBase
     }
     
     [HttpGet("cursor")]
-    [AllowAnonymous]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetWithCursor(
         int pageSize = 20,
@@ -56,7 +56,7 @@ public class ProductsController : ControllerBase
 
 
     [HttpGet("{id:int}")]
-    [AllowAnonymous]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ProductDto>> GetById(int id)

@@ -29,15 +29,13 @@ public class ListProductsQueryHandlerTests
         );
         await db.SaveChangesAsync();
 
-        var loggerFactory = LoggerFactory.Create(b => { b.AddConsole(); });
-
-        var config = new MapperConfiguration(cfg => { cfg.AddProfile(new MappingProfile()); }, loggerFactory);
-
+        var config = new MapperConfiguration(cfg => { cfg.AddProfile(new MappingProfile()); });
         var mapper = config.CreateMapper();
+
 
         var handler = new ListProductsQueryHandler(db, mapper);
 
-        var query = new ListProductsQuery(1, 10, "a", null, null, "price", false);
+        var query = new ListProductsQuery(1, 10, null, null, null, "price", false);
         var result = await handler.Handle(query, CancellationToken.None);
 
         result.TotalCount.Should().BeGreaterThan(0);

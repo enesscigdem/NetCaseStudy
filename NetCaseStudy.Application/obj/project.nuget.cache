@@ -1,13 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "p4GKgpGgb6s=",
+  "dgSpecHash": "Pp2PPAtjWrc=",
   "success": true,
   "projectFilePath": "/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/NetCaseStudy.Application.csproj",
   "expectedPackageFiles": [
-    "/Users/enescigdem/.nuget/packages/automapper/15.0.1/automapper.15.0.1.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/enescigdem/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
     "/Users/enescigdem/.nuget/packages/mediatr/13.0.0/mediatr.13.0.0.nupkg.sha512",
     "/Users/enescigdem/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/Users/enescigdem/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/enescigdem/.nuget/packages/microsoft.entityframeworkcore/8.0.5/microsoft.entityframeworkcore.8.0.5.nupkg.sha512",
     "/Users/enescigdem/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.5/microsoft.entityframeworkcore.abstractions.8.0.5.nupkg.sha512",
     "/Users/enescigdem/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.5/microsoft.entityframeworkcore.analyzers.8.0.5.nupkg.sha512",

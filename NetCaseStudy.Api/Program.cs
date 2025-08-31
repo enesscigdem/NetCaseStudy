@@ -27,11 +27,32 @@ using NetCaseStudy.Infrastructure.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog((ctx, lc) => { lc.ReadFrom.Configuration(ctx.Configuration); });
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-                       ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = string.Empty;
 
 var redisConn = builder.Configuration.GetConnectionString("Redis");
+
+if (builder.Environment.IsEnvironment("Test"))
+{
+    builder.Services.AddDbContext<ApplicationDbContext>(o =>
+        o.UseInMemoryDatabase("NetCaseStudy_TestDb"));
+    builder.Services.AddDbContext<AppIdentityDbContext>(o =>
+        o.UseInMemoryDatabase("NetCaseStudy_IdentityTestDb"));
+
+    builder.Services.AddHealthChecks()
+        .AddCheck("self", () => Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult.Healthy());
+}
+else
+{
+    connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+    builder.Services.AddDbContext<ApplicationDbContext>(o =>
+        o.UseSqlServer(connectionString));
+    builder.Services.AddDbContext<AppIdentityDbContext>(o =>
+        o.UseSqlServer(connectionString));
+
+    builder.Services.AddHealthChecks()
+        .AddSqlServer(connectionString, name: "sqlserver")
+        .AddRedis(redisConn!, name: "redis");
+}
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -141,7 +162,33 @@ builder.Services.AddDbContext<ApplicationDbContext>(o =>
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Description = "JWT Authorization header using the Bearer scheme."
+    });
+    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
+
 
 var app = builder.Build();
 await IdentitySeed.SeedRolesAndAdminAsync(app.Services);
