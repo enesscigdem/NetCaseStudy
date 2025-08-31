@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NetCaseStudy.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69ba0fa78157bf8adf4a7bd7067bf04778c3acc4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54698ee317b140b0a152ef8be9b46c47f2a57518")]
 [assembly: System.Reflection.AssemblyProductAttribute("NetCaseStudy.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NetCaseStudy.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Tokens;
 using NetCaseStudy.Api.Authorization;
 using Serilog;
@@ -26,10 +27,10 @@ using NetCaseStudy.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog((ctx, lc) => { lc.ReadFrom.Configuration(ctx.Configuration); });
-var connectionString = string.Empty;
+builder.Host.UseSerilog((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration));
 
 var redisConn = builder.Configuration.GetConnectionString("Redis");
+string? connectionString = null;
 
 if (builder.Environment.IsEnvironment("Test"))
 {
@@ -39,25 +40,27 @@ if (builder.Environment.IsEnvironment("Test"))
         o.UseInMemoryDatabase("NetCaseStudy_IdentityTestDb"));
 
     builder.Services.AddHealthChecks()
-        .AddCheck("self", () => Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult.Healthy());
+        .AddCheck("self", () => HealthCheckResult.Healthy());
 }
 else
 {
     connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+
     builder.Services.AddDbContext<ApplicationDbContext>(o =>
-        o.UseSqlServer(connectionString));
+        o.UseSqlServer(connectionString, b => b.MigrationsAssembly("NetCaseStudy.Infrastructure")));
     builder.Services.AddDbContext<AppIdentityDbContext>(o =>
         o.UseSqlServer(connectionString));
 
     builder.Services.AddHealthChecks()
         .AddSqlServer(connectionString, name: "sqlserver")
         .AddRedis(redisConn!, name: "redis");
-}
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDbContext<AppIdentityDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    builder.Services.AddStackExchangeRedisCache(options => { options.Configuration = redisConn; });
+    builder.Services.AddSingleton<StackExchange.Redis.IConnectionMultiplexer>(_ =>
+        StackExchange.Redis.ConnectionMultiplexer.Connect(redisConn));
+    builder.Services.AddScoped<NetCaseStudy.Application.Abstractions.ICacheService,
+        NetCaseStudy.Infrastructure.Cache.RedisCacheService>();
+}
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     {
@@ -89,7 +92,6 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
@@ -97,29 +99,17 @@ builder.Services.AddAuthorization(options =>
 });
 builder.Services.AddScoped<IAuthorizationHandler, OrderAuthorizationHandler>();
 
-
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
 
-builder.Services.AddStackExchangeRedisCache(options =>
-{
-    options.Configuration = redisConn;
-});
-builder.Services.AddSingleton<StackExchange.Redis.IConnectionMultiplexer>(_ =>
-    StackExchange.Redis.ConnectionMultiplexer.Connect(redisConn));
-builder.Services.AddScoped<NetCaseStudy.Application.Abstractions.ICacheService,
-    NetCaseStudy.Infrastructure.Cache.RedisCacheService>();
-
-
 builder.Services.AddMediatR(cfg =>
-    cfg.RegisterServicesFromAssembly(typeof(NetCaseStudy.Application.DTOs.ProductDto).Assembly));
+    cfg.RegisterServicesFromAssembly(typeof(ProductDto).Assembly));
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
-builder.Services
-    .AddValidatorsFromAssemblyContaining<NetCaseStudy.Application.Validators.CreateProductRequestValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<NetCaseStudy.Application.Validators.CreateProductRequestValidator>();
 builder.Services.AddFluentValidationAutoValidation();
 
 builder.Services.AddApiVersioning(options =>
@@ -139,28 +129,15 @@ builder.Services.AddRateLimiter(options =>
 {
     options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
     {
-        var user = context.User;
-        var role = user?.IsInRole("Admin") == true ? "Admin" : "User";
-        return RateLimitPartition.GetFixedWindowLimiter(role, partition =>
-        {
-            return role == "Admin"
+        var role = context.User?.IsInRole("Admin") == true ? "Admin" : "User";
+        return RateLimitPartition.GetFixedWindowLimiter(role, _ =>
+            role == "Admin"
                 ? new FixedWindowRateLimiterOptions { PermitLimit = int.MaxValue, QueueProcessingOrder = QueueProcessingOrder.OldestFirst, Window = TimeSpan.FromSeconds(1) }
-                : new FixedWindowRateLimiterOptions { PermitLimit = 50, QueueProcessingOrder = QueueProcessingOrder.OldestFirst, Window = TimeSpan.FromMinutes(1) };
-        });
+                : new FixedWindowRateLimiterOptions { PermitLimit = 50, QueueProcessingOrder = QueueProcessingOrder.OldestFirst, Window = TimeSpan.FromMinutes(1) });
     });
 });
 
-
-builder.Services.AddHealthChecks()
-    .AddSqlServer(connectionString, name: "sqlserver")
-    .AddRedis(redisConn!, name: "redis");
-
-
-builder.Services.AddDbContext<ApplicationDbContext>(o =>
-    o.UseSqlServer(connectionString, b => b.MigrationsAssembly("NetCaseStudy.Infrastructure")));
-
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -175,23 +152,17 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
     {
-        {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-            {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
-                {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            Array.Empty<string>()
-        }
+        { new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            { Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                { Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme, Id = "Bearer" } },
+          Array.Empty<string>() }
     });
 });
 
-
 var app = builder.Build();
+
 await IdentitySeed.SeedRolesAndAdminAsync(app.Services);
+
 app.UseSerilogRequestLogging();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 

@@ -318,3 +318,4 @@ System.MissingMethodException: Method not found: 'Void AutoMapper.MapperConfigur
 2025-09-01 02:10:53.198 +03:00 [INF] HTTP GET /api/v1/Products responded 304 in 48.9085 ms
 2025-09-01 02:10:59.799 +03:00 [INF] HTTP POST /api/v1/Products responded 401 in 5.6279 ms
 2025-09-01 02:13:37.495 +03:00 [INF] HTTP GET /swagger/health responded 404 in 3.9835 ms
+2025-09-01 02:37:22.014 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 175.9908 ms
