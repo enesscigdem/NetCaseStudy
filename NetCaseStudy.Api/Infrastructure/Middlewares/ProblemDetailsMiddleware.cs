@@ -1,7 +1,7 @@
 using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using NetCaseStudy.Api.Infrastructure.Localization;
+using NetCaseStudy.Application.Localization;
 
 namespace NetCaseStudy.Api.Infrastructure.Middlewares
 {

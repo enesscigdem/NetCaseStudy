@@ -9,4 +9,24 @@
     <data name="UnexpectedErrorDetail" xml:space="preserve">
     <value>İsteğinizi tamamlayamadık. Lütfen daha sonra tekrar deneyin.</value>
   </data>
+
+    <data name="InvalidCredentials" xml:space="preserve">
+    <value>Geçersiz kimlik bilgileri</value>
+  </data>
+    <data name="UserNotFound" xml:space="preserve">
+    <value>Kullanıcı bulunamadı</value>
+  </data>
+
+    <data name="Identity_DefaultError" xml:space="preserve">
+    <value>Bilinmeyen bir hata oluştu.</value>
+  </data>
+    <data name="Identity_PasswordTooShort" xml:space="preserve">
+    <value>Parola en az {0} karakter olmalıdır.</value>
+  </data>
+    <data name="Identity_DuplicateEmail" xml:space="preserve">
+    <value>'{0}' e-posta adresi zaten kullanılıyor.</value>
+  </data>
+    <data name="Identity_DuplicateUserName" xml:space="preserve">
+    <value>'{0}' kullanıcı adı zaten kullanılıyor.</value>
+  </data>
 </root>

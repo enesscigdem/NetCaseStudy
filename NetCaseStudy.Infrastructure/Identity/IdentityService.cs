@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Localization;
 using NetCaseStudy.Application.Abstractions;
+using NetCaseStudy.Application.Localization;
 
 namespace NetCaseStudy.Infrastructure.Identity;
 
@@ -11,17 +12,20 @@ public class IdentityService : IIdentityService
     private readonly SignInManager<IdentityUser> _signInManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly TokenService _tokenService;
+    private readonly IStringLocalizer<SharedResource> _localizer;
 
     public IdentityService(
         UserManager<IdentityUser> userManager,
         SignInManager<IdentityUser> signInManager,
         RoleManager<IdentityRole> roleManager,
-        TokenService tokenService)
+        TokenService tokenService,
+        IStringLocalizer<SharedResource> localizer)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _roleManager = roleManager;
         _tokenService = tokenService;
+        _localizer = localizer;
     }
 
     public async Task<(bool Success, IEnumerable<string> Errors)> RegisterAsync(string email, string password, string role)
@@ -46,6 +50,7 @@ public class IdentityService : IIdentityService
                 return (false, roleResult.Errors.Select(e => e.Description));
             }
         }
+
         var addRoleResult = await _userManager.AddToRoleAsync(user, role);
         if (!addRoleResult.Succeeded)
         {
@@ -60,17 +65,18 @@ public class IdentityService : IIdentityService
         var user = await _userManager.FindByEmailAsync(email);
         if (user == null)
         {
-            return (false, null, new[] { "User not found" });
+            return (false, null, new[] { _localizer["UserNotFound"].Value });
         }
 
         var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
         if (!result.Succeeded)
         {
-            return (false, null, new[] { "Invalid credentials" });
+            return (false, null, new[] { _localizer["InvalidCredentials"].Value });
         }
 
         var roles = await _userManager.GetRolesAsync(user);
         var token = _tokenService.GenerateToken(user, roles);
         return (true, token, Enumerable.Empty<string>());
     }
+
 }

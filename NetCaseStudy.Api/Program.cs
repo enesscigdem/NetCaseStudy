@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Text;
 using System.Threading.RateLimiting;
-using System.Globalization;                              
+using System.Globalization;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -14,29 +14,32 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Options;                      
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
+
 using NetCaseStudy.Api.Authorization;
 using NetCaseStudy.Api.Infrastructure.Logging;
 using NetCaseStudy.Api.Infrastructure.Middlewares;
-using Serilog;
+using NetCaseStudy.Api.Infrastructure.Swagger;
 using NetCaseStudy.Api.Middlewares;
 using NetCaseStudy.Api.Services;
+
 using NetCaseStudy.Application.Abstractions;
 using NetCaseStudy.Application.DTOs;
 using NetCaseStudy.Application.Mapping;
+using NetCaseStudy.Application.Localization;
+
 using NetCaseStudy.Infrastructure.Cache;
 using NetCaseStudy.Infrastructure.Identity;
 using NetCaseStudy.Infrastructure.Persistence;
-using NetCaseStudy.Api.Infrastructure.Swagger;           
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Host.UseSerilog((ctx, lc) =>
 {
     lc.ReadFrom.Configuration(ctx.Configuration)
-        .Enrich.With<CorrelationIdEnricher>();
+      .Enrich.With<CorrelationIdEnricher>();
 });
 
 var redisConn = builder.Configuration.GetConnectionString("Redis");
@@ -74,6 +77,7 @@ else
     builder.Services.AddScoped<ICacheService, RedisCacheService>();
 }
 
+/* Identity + yerelleştirme */
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     {
         options.Password.RequireNonAlphanumeric = false;
@@ -82,8 +86,10 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
         options.Password.RequireDigit = false;
     })
     .AddEntityFrameworkStores<AppIdentityDbContext>()
-    .AddDefaultTokenProviders();
+    .AddDefaultTokenProviders()
+    .AddErrorDescriber<LocalizedIdentityErrorDescriber>();
 
+/* JWT */
 var jwtSection = builder.Configuration.GetSection("Jwt");
 var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSection["Key"]!));
 builder.Services.AddAuthentication(options =>
@@ -104,6 +110,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+/* Authorization */
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
@@ -117,13 +124,16 @@ builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
 
+/* MediatR & AutoMapper */
 builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(ProductDto).Assembly));
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
+/* FluentValidation */
 builder.Services.AddValidatorsFromAssemblyContaining<NetCaseStudy.Application.Validators.CreateProductRequestValidator>();
 builder.Services.AddFluentValidationAutoValidation();
 
+/* API Versioning + Swagger */
 builder.Services.AddApiVersioning(options =>
 {
     options.AssumeDefaultVersionWhenUnspecified = true;
@@ -137,6 +147,7 @@ builder.Services.AddVersionedApiExplorer(options =>
     options.SubstituteApiVersionInUrl = true;
 });
 
+/* Localization */
 builder.Services.AddLocalization(opt => opt.ResourcesPath = "Resources");
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
@@ -144,8 +155,10 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedCultures = cultures;
     options.SupportedUICultures = cultures;
     options.DefaultRequestCulture = new("en-US");
+    // Accept-Language header otomatik okunur; ayrıca QueryString/Route vs istersen burada ayarlayabilirsin.
 });
 
+/* Rate Limiter */
 builder.Services.AddRateLimiter(options =>
 {
     options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
@@ -191,8 +204,9 @@ builder.Services.AddRateLimiter(options =>
     });
 });
 
-
-builder.Services.AddControllers();
+/* Controllers + DataAnnotations yerelleştirmesi */
+builder.Services.AddControllers()
+    .AddDataAnnotationsLocalization();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -219,14 +233,12 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-await IdentitySeed.SeedRolesAndAdminAsync(app.Services);
-
-app.UseSerilogRequestLogging();
-
-app.UseMiddleware<ProblemDetailsMiddleware>();
-
+/* !!! Yerelleştirme erken: ProblemDetails gibi mesaj basan middleware’lerden ÖNCE !!! */
 var locOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>();
 app.UseRequestLocalization(locOptions.Value);
+
+app.UseSerilogRequestLogging();
+app.UseMiddleware<ProblemDetailsMiddleware>();
 
 app.UseRateLimiter();
 app.UseHttpsRedirection();
@@ -247,12 +259,21 @@ if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
     });
 }
 
+/* Migrate + Seed sırası */
 if (Environment.GetEnvironmentVariable("MIGRATE_ON_STARTUP")?
         .Equals("true", StringComparison.OrdinalIgnoreCase) == true)
 {
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     await db.Database.MigrateAsync();
+
+    // Identity seed migrasyondan sonra
+    await IdentitySeed.SeedRolesAndAdminAsync(app.Services);
+}
+else
+{
+    // MIGRATE_ON_STARTUP yoksa da seed’i dene (DB hazır değilse log’a düşer)
+    await IdentitySeed.SeedRolesAndAdminAsync(app.Services);
 }
 
 app.MapControllers();

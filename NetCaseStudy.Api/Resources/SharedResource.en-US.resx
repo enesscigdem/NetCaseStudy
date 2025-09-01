@@ -9,4 +9,24 @@
     <data name="UnexpectedErrorDetail" xml:space="preserve">
     <value>We could not complete your request. Please try again later.</value>
   </data>
+
+    <data name="InvalidCredentials" xml:space="preserve">
+    <value>Invalid credentials</value>
+  </data>
+    <data name="UserNotFound" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+
+    <data name="Identity_DefaultError" xml:space="preserve">
+    <value>An unknown failure has occurred.</value>
+  </data>
+    <data name="Identity_PasswordTooShort" xml:space="preserve">
+    <value>Passwords must be at least {0} characters.</value>
+  </data>
+    <data name="Identity_DuplicateEmail" xml:space="preserve">
+    <value>Email '{0}' is already taken.</value>
+  </data>
+    <data name="Identity_DuplicateUserName" xml:space="preserve">
+    <value>Username '{0}' is already taken.</value>
+  </data>
 </root>
