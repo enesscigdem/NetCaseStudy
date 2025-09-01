@@ -37,7 +37,7 @@
 * **Api**: Controller’lar, filtreler, middleware’ler, DI kayıtları, rate limit, auth, swagger vb.
   Örneğin `ETagFilterAttribute` ve `OrdersController` içindeki policy/resource-based kontroller burada.
 * **Application**: CQRS (komut/sorgu), DTO’lar, mapping profilleri, arayüzler (örneğin. `ICacheService`).
-* **Domain**: Entity’ler, temel iş kuralları yer alıyor.
+* **Domain**: Entity’ler, temel iş kuralları yer alıyor. Tüm tablolarda IAudit entity kullandım. (Isactive, Isdeleted, CreatedAt, CreatedBy, ModifiedAt, ModifiedBy gibi.. )
 * **Infrastructure**: EF Core DbContext/migrations, `RedisCacheService`, Identity seed vs burada yeralıyor.
 * **Tests**: API ve Application testleri; `CustomWebApplicationFactory`, `FakeCacheService`, `FakeCurrentUserService` gibi yardımcılar da burada.
 
