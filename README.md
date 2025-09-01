@@ -174,15 +174,15 @@ GET /health
 **Kayıt**
 
 ```bash
-curl -X POST https://localhost:xxxx/api/auth/register \
+curl -X POST https://localhost:7247/api/auth/register \
   -H "Content-Type: application/json" \
-  -d '{"email":"enes@test.com","password":"123456!!"}'
+  -d '{"email":"enes@gmail.com","password":"123456!!"}'
 ```
 
 **Giriş (JWT alıyoruz)**
 
 ```bash
-curl -X POST https://localhost:xxxx/api/auth/login \
+curl -X POST https://localhost:7247/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"enes@gmail.com","password":"123456!!"}'
 ```
@@ -198,7 +198,7 @@ curl -i "https://localhost:7247/api/v1/products?page=1&pageSize=10"
 etag: "MqVJzgKBOmAj4caaUX1w02Jf17g0NjVl2D0EYy9dcws="
 
 # 2. aldığım etag ile 304 bekliyorm
-curl -i "https://localhost:xxxx/api/v1/products?page=1&pageSize=10" \
+curl -i "https://localhost:7247/api/v1/products?page=1&pageSize=10" \
   -H 'If-None-Match: "MqVJzgKBOmAj4caaUX1w02Jf17g0NjVl2D0EYy9dcws"'
 ```
 
