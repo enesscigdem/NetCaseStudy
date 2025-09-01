@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using NetCaseStudy.Application.Abstractions;
 using NetCaseStudy.Application.DTOs;
 using NetCaseStudy.Application.Features.Orders.Commands;
@@ -57,6 +58,7 @@ public class OrdersController : ControllerBase
     [Authorize]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [EnableRateLimiting("WritePolicy")]
     public async Task<ActionResult<int>> Create([FromBody] CreateOrderRequest request)
     {
         var userId = _currentUser.UserId;
@@ -73,6 +75,7 @@ public class OrdersController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [EnableRateLimiting("WritePolicy")]
     public async Task<IActionResult> Cancel(int id)
     {
         var userId = _currentUser.UserId;

@@ -2261,6 +2261,14 @@
             "fileVersion": "1.0.0.0"
           }
         },
+        "resources": {
+          "tr-TR/NetCaseStudy.Api.resources.dll": {
+            "locale": "tr-TR"
+          },
+          "en-US/NetCaseStudy.Api.resources.dll": {
+            "locale": "en-US"
+          }
+        },
         "compile": {
           "NetCaseStudy.Api.dll": {}
         }

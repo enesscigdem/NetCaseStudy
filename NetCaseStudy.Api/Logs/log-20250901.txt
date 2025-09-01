@@ -319,3 +319,186 @@ System.MissingMethodException: Method not found: 'Void AutoMapper.MapperConfigur
 2025-09-01 02:10:59.799 +03:00 [INF] HTTP POST /api/v1/Products responded 401 in 5.6279 ms
 2025-09-01 02:13:37.495 +03:00 [INF] HTTP GET /swagger/health responded 404 in 3.9835 ms
 2025-09-01 02:37:22.014 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 175.9908 ms
+2025-09-01 02:42:40.813 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 181.1352 ms
+2025-09-01 02:42:46.177 +03:00 [INF] HTTP POST /api/v1/Auth/register responded 400 in 118.2944 ms
+2025-09-01 02:42:51.077 +03:00 [INF] HTTP POST /api/v1/Auth/login responded 400 in 16.9098 ms
+2025-09-01 02:42:58.547 +03:00 [INF] HTTP GET /api/v1/Orders responded 401 in 19.2026 ms
+2025-09-01 02:43:02.155 +03:00 [INF] HTTP POST /api/v1/Orders responded 401 in 10.3533 ms
+2025-09-01 02:43:09.242 +03:00 [INF] HTTP GET /api/v1/Orders/1 responded 401 in 7.3805 ms
+2025-09-01 02:43:20.915 +03:00 [INF] HTTP PUT /api/v1/Orders/1/cancel responded 401 in 1.2396 ms
+2025-09-01 02:43:26.513 +03:00 [INF] HTTP GET /api/v1/Products responded 401 in 0.4408 ms
+2025-09-01 02:43:31.863 +03:00 [INF] HTTP POST /api/v1/Products responded 401 in 1.7616 ms
+2025-09-01 02:43:36.355 +03:00 [INF] HTTP GET /api/v1/Products/cursor responded 401 in 0.7587 ms
+2025-09-01 02:43:37.701 +03:00 [INF] HTTP GET /api/v1/Products/cursor responded 401 in 0.5390 ms
+2025-09-01 02:43:41.465 +03:00 [INF] HTTP GET /api/v1/Products/1 responded 401 in 0.5197 ms
+2025-09-01 02:43:48.627 +03:00 [INF] HTTP PUT /api/v1/Products/1 responded 401 in 0.7621 ms
+2025-09-01 02:43:52.596 +03:00 [INF] HTTP DELETE /api/v1/Products/1 responded 401 in 2.3020 ms
+2025-09-01 02:43:53.521 +03:00 [INF] HTTP GET /swagger/index.html responded 200 in 85.1266 ms
+2025-09-01 02:43:53.676 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 12.7380 ms
+2025-09-01 02:45:00.578 +03:00 [INF] HTTP POST /api/v1/Auth/register responded 204 in 376.1919 ms
+2025-09-01 02:45:13.642 +03:00 [INF] HTTP POST /api/v1/Auth/login responded 401 in 109.7595 ms
+2025-09-01 02:45:17.594 +03:00 [INF] HTTP POST /api/v1/Auth/login responded 401 in 87.1050 ms
+2025-09-01 02:45:20.020 +03:00 [INF] HTTP POST /api/v1/Auth/login responded 200 in 110.7370 ms
+2025-09-01 02:45:23.941 +03:00 [INF] HTTP GET /swagger/index.html responded 200 in 2.3873 ms
+2025-09-01 02:45:24.113 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 20.6065 ms
+2025-09-01 02:45:32.112 +03:00 [INF] HTTP GET /api/v1/Orders responded 401 in 60.9968 ms
+2025-09-01 02:45:39.026 +03:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-09-01 02:45:39.211 +03:00 [INF] HTTP GET /api/v1/Orders responded 200 in 227.0213 ms
+2025-09-01 02:45:47.479 +03:00 [ERR] Unhandled exception occurred
+System.InvalidOperationException: One or more products are invalid or inactive.
+   at NetCaseStudy.Application.Features.Orders.Commands.CreateOrderCommandHandler.Handle(CreateOrderCommand request, CancellationToken cancellationToken) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/Features/Orders/Commands/CreateOrderCommand.cs:line 26
+   at NetCaseStudy.Api.Controllers.OrdersController.Create(CreateOrderRequest request) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Api/Controllers/OrdersController.cs:line 67
+   at lambda_method384(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at NetCaseStudy.Api.Middlewares.ExceptionHandlingMiddleware.Invoke(HttpContext context) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Api/Middlewares/ExceptionHandlingMiddleware.cs:line 21
+2025-09-01 02:45:47.489 +03:00 [ERR] HTTP POST /api/v1/Orders responded 500 in 128.5021 ms
+2025-09-01 02:45:53.069 +03:00 [INF] HTTP GET /api/v1/Products responded 200 in 131.6580 ms
+2025-09-01 02:46:03.250 +03:00 [INF] HTTP POST /api/v1/Products responded 403 in 9.4461 ms
+2025-09-01 02:46:24.136 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 25.3658 ms
+2025-09-01 02:46:41.505 +03:00 [INF] HTTP POST /api/v1/Auth/login responded 200 in 127.3794 ms
+2025-09-01 02:46:56.496 +03:00 [INF] HTTP POST /api/v1/Products responded 201 in 398.2713 ms
+2025-09-01 02:47:04.437 +03:00 [INF] HTTP GET /api/v1/Products responded 200 in 58.4146 ms
+2025-09-01 02:47:12.265 +03:00 [INF] HTTP POST /api/v1/Products responded 201 in 23.4726 ms
+2025-09-01 02:47:20.029 +03:00 [INF] HTTP POST /api/v1/Products responded 201 in 20.9565 ms
+2025-09-01 02:47:26.751 +03:00 [INF] HTTP GET /api/v1/Products/cursor responded 200 in 188.8594 ms
+2025-09-01 02:47:34.229 +03:00 [ERR] Unhandled exception occurred
+System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at NetCaseStudy.Application.Features.Products.Queries.ListProductsCursorQueryHandler.Handle(ListProductsCursorQuery request, CancellationToken ct) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/Features/Products/Queries/ListProductsCursorQuery.cs:line 48
+   at NetCaseStudy.Api.Controllers.ProductsController.GetWithCursor(Int32 pageSize, String cursor, String search, Nullable`1 minPrice, Nullable`1 maxPrice, String sortBy, Boolean desc) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Api/Controllers/ProductsController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at NetCaseStudy.Api.Middlewares.ExceptionHandlingMiddleware.Invoke(HttpContext context) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Api/Middlewares/ExceptionHandlingMiddleware.cs:line 21
+2025-09-01 02:47:34.237 +03:00 [ERR] HTTP GET /api/v1/Products/cursor responded 500 in 23.7814 ms
+2025-09-01 02:47:38.711 +03:00 [ERR] Unhandled exception occurred
+System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at NetCaseStudy.Application.Features.Products.Queries.ListProductsCursorQueryHandler.Handle(ListProductsCursorQuery request, CancellationToken ct) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/Features/Products/Queries/ListProductsCursorQuery.cs:line 48
+   at NetCaseStudy.Api.Controllers.ProductsController.GetWithCursor(Int32 pageSize, String cursor, String search, Nullable`1 minPrice, Nullable`1 maxPrice, String sortBy, Boolean desc) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Api/Controllers/ProductsController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at NetCaseStudy.Api.Middlewares.ExceptionHandlingMiddleware.Invoke(HttpContext context) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Api/Middlewares/ExceptionHandlingMiddleware.cs:line 21
+2025-09-01 02:47:38.713 +03:00 [ERR] HTTP GET /api/v1/Products/cursor responded 500 in 3.7342 ms
+2025-09-01 02:47:44.020 +03:00 [INF] HTTP GET /api/v1/Products/cursor responded 200 in 73.6843 ms
+2025-09-01 02:47:47.251 +03:00 [INF] HTTP GET /api/v1/Products/cursor responded 200 in 16.5298 ms
+2025-09-01 02:47:53.733 +03:00 [INF] HTTP GET /api/v1/Products/11 responded 404 in 64.0967 ms
+2025-09-01 02:47:55.867 +03:00 [INF] HTTP GET /api/v1/Products/1 responded 200 in 19.1988 ms
+2025-09-01 02:48:06.158 +03:00 [INF] HTTP PUT /api/v1/Products/1 responded 204 in 92.9152 ms
+2025-09-01 02:48:10.432 +03:00 [INF] HTTP GET /api/v1/Products/1 responded 200 in 16.5609 ms
+2025-09-01 02:48:20.316 +03:00 [INF] HTTP DELETE /api/v1/Products/3 responded 204 in 54.6334 ms
+2025-09-01 02:48:23.619 +03:00 [INF] HTTP GET /api/v1/Products responded 200 in 18.1407 ms
+2025-09-01 02:48:39.416 +03:00 [INF] HTTP DELETE /api/v1/Products/2 responded 403 in 11.7845 ms
+2025-09-01 02:49:06.127 +03:00 [INF] HTTP GET /api/v1/Orders responded 200 in 33.3458 ms
+2025-09-01 02:49:15.272 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 184.5283 ms
+2025-09-01 02:49:17.162 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 30.1348 ms
+2025-09-01 02:49:18.577 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 18.4944 ms
+2025-09-01 02:49:18.890 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 25.7926 ms
+2025-09-01 02:49:19.205 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 26.0759 ms
+2025-09-01 02:49:19.335 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 27.1007 ms
+2025-09-01 02:49:19.455 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 19.3383 ms
+2025-09-01 02:49:19.592 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 19.3928 ms
+2025-09-01 02:49:19.753 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 21.0914 ms
+2025-09-01 02:49:20.108 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 20.6500 ms
+2025-09-01 02:49:20.244 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 18.1208 ms
+2025-09-01 02:49:20.395 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 21.9393 ms
+2025-09-01 02:49:20.570 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 20.9685 ms
+2025-09-01 02:49:20.713 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 14.4687 ms
+2025-09-01 02:49:20.867 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 16.6923 ms
+2025-09-01 02:49:21.021 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 18.4605 ms
+2025-09-01 02:49:21.181 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 18.9052 ms
+2025-09-01 02:49:21.323 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 19.6987 ms
+2025-09-01 02:49:21.495 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 22.2182 ms
+2025-09-01 02:49:21.623 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 20.1472 ms
+2025-09-01 02:49:21.774 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 17.9119 ms
+2025-09-01 02:49:21.936 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 23.3841 ms
+2025-09-01 02:49:22.080 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 23.0765 ms
+2025-09-01 02:49:22.208 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 22.6312 ms
+2025-09-01 02:49:22.364 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 22.9185 ms
+2025-09-01 02:49:23.617 +03:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.0637 ms
+2025-09-01 02:49:23.822 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 15.9785 ms
+2025-09-01 02:49:28.111 +03:00 [INF] HTTP GET /api/v1/Orders responded 401 in 0.6975 ms
+2025-09-01 02:49:41.621 +03:00 [INF] HTTP POST /api/v1/Auth/login responded 200 in 112.0208 ms
+2025-09-01 02:49:52.355 +03:00 [INF] HTTP GET /api/v1/Orders responded 200 in 157.8755 ms
+2025-09-01 02:50:41.677 +03:00 [INF] HTTP POST /api/v1/Products responded 201 in 50.8045 ms
+2025-09-01 02:50:49.870 +03:00 [INF] HTTP GET /api/v1/Products responded 200 in 18.8420 ms
+2025-09-01 02:51:19.820 +03:00 [ERR] Unhandled exception occurred
+System.InvalidOperationException: One or more products are invalid or inactive.
+   at NetCaseStudy.Application.Features.Orders.Commands.CreateOrderCommandHandler.Handle(CreateOrderCommand request, CancellationToken cancellationToken) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Application/Features/Orders/Commands/CreateOrderCommand.cs:line 26
+   at NetCaseStudy.Api.Controllers.OrdersController.Create(CreateOrderRequest request) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Api/Controllers/OrdersController.cs:line 67
+   at lambda_method384(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at NetCaseStudy.Api.Middlewares.ExceptionHandlingMiddleware.Invoke(HttpContext context) in /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Api/Middlewares/ExceptionHandlingMiddleware.cs:line 21
+2025-09-01 02:51:19.833 +03:00 [ERR] HTTP POST /api/v1/Orders responded 500 in 45.3588 ms
+2025-09-01 02:51:23.594 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 36.3923 ms
+2025-09-01 02:51:24.938 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 24.2746 ms
+2025-09-01 02:51:25.060 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 20.7736 ms
+2025-09-01 02:51:25.211 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 22.2941 ms
+2025-09-01 02:51:25.338 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 19.8931 ms
+2025-09-01 02:51:25.461 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 22.3380 ms
+2025-09-01 02:51:25.605 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 17.1533 ms
+2025-09-01 02:51:30.285 +03:00 [INF] HTTP GET /api/v1/Orders responded 200 in 42.9932 ms
+2025-09-01 02:51:37.529 +03:00 [INF] HTTP GET /api/v1/Orders responded 200 in 78.2548 ms
+2025-09-01 02:51:50.005 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 26.1118 ms
+2025-09-01 02:52:07.808 +03:00 [INF] HTTP POST /api/v1/Auth/login responded 200 in 112.4377 ms
+2025-09-01 02:52:21.043 +03:00 [INF] HTTP GET /api/v1/Orders responded 200 in 44.0525 ms
+2025-09-01 02:52:32.292 +03:00 [INF] HTTP POST /api/v1/Orders responded 201 in 42.0933 ms
+2025-09-01 02:52:37.702 +03:00 [INF] HTTP GET /api/v1/Orders responded 200 in 40.8983 ms
+2025-09-01 02:52:39.991 +03:00 [INF] HTTP GET /api/v1/Orders responded 200 in 51.8168 ms

@@ -33,6 +33,14 @@
         },
         "runtime": {
           "NetCaseStudy.Api.dll": {}
+        },
+        "resources": {
+          "en-US/NetCaseStudy.Api.resources.dll": {
+            "locale": "en-US"
+          },
+          "tr-TR/NetCaseStudy.Api.resources.dll": {
+            "locale": "tr-TR"
+          }
         }
       },
       "AspNetCore.HealthChecks.Redis/9.0.0": {

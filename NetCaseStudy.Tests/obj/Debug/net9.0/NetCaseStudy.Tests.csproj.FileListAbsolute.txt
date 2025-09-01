@@ -2,6 +2,7 @@
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/CoverletSourceRootsMapping_NetCaseStudy.Tests
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Api.deps.json
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Api.runtimeconfig.json
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/appsettings.Docker.json
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/appsettings.json
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Api.staticwebassets.endpoints.json
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Api
@@ -481,6 +482,8 @@
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Application.pdb
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Domain.pdb
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Infrastructure.pdb
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/tr-TR/NetCaseStudy.Api.resources.dll
+/Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/bin/Debug/net9.0/en-US/NetCaseStudy.Api.resources.dll
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.csproj.AssemblyReference.cache
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/obj/Debug/net9.0/MvcTestingAppManifest.json
 /Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.GeneratedMSBuildEditorConfig.editorconfig

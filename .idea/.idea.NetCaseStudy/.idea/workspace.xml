@@ -7,10 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba5e2dd5-a2ca-41c7-98c6-77703474f431" name="Changes" comment="">
+    <list default="true" id="ba5e2dd5-a2ca-41c7-98c6-77703474f431" name="Changes" comment="Update source link URLs, assembly informational versions, and refactor health check registration">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NetCaseStudy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NetCaseStudy/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/Controllers/OrdersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/Controllers/OrdersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/Controllers/ProductsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/Controllers/ProductsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/Logs/log-20250901.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/Logs/log-20250901.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/bin/Debug/net9.0/NetCaseStudy.Api.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/bin/Debug/net9.0/NetCaseStudy.Api.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/bin/Debug/net9.0/NetCaseStudy.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/bin/Debug/net9.0/NetCaseStudy.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/bin/Debug/net9.0/NetCaseStudy.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/bin/Debug/net9.0/NetCaseStudy.Api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/bin/Debug/net9.0/NetCaseStudy.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/bin/Debug/net9.0/NetCaseStudy.Application.dll" afterDir="false" />
@@ -22,11 +25,18 @@
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/NetCaseStudy.Api.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/ref/NetCaseStudy.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/ref/NetCaseStudy.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/refint/NetCaseStudy.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/Debug/net9.0/refint/NetCaseStudy.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Api/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Api/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Application/Features/Products/Queries/GetProductByIdQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Application/Features/Products/Queries/GetProductByIdQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Application/Features/Products/Queries/ListProductsCursorQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Application/Features/Products/Queries/ListProductsCursorQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Application/Features/Products/Queries/ListProductsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Application/Features/Products/Queries/ListProductsQuery.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Application/bin/Debug/net9.0/NetCaseStudy.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Application/bin/Debug/net9.0/NetCaseStudy.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Application/bin/Debug/net9.0/NetCaseStudy.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Application/bin/Debug/net9.0/NetCaseStudy.Application.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Application/bin/Debug/net9.0/NetCaseStudy.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Application/bin/Debug/net9.0/NetCaseStudy.Domain.dll" afterDir="false" />
@@ -39,6 +49,8 @@
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Application/obj/Debug/net9.0/NetCaseStudy.Application.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Application/obj/Debug/net9.0/ref/NetCaseStudy.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Application/obj/Debug/net9.0/ref/NetCaseStudy.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Application/obj/Debug/net9.0/refint/NetCaseStudy.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Application/obj/Debug/net9.0/refint/NetCaseStudy.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Application/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Application/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Application/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Domain/bin/Debug/net9.0/NetCaseStudy.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Domain/bin/Debug/net9.0/NetCaseStudy.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Domain/bin/Debug/net9.0/NetCaseStudy.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Domain/bin/Debug/net9.0/NetCaseStudy.Domain.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Domain/obj/Debug/net9.0/NetCaseStudy.Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Domain/obj/Debug/net9.0/NetCaseStudy.Domain.AssemblyInfo.cs" afterDir="false" />
@@ -48,6 +60,7 @@
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Domain/obj/Debug/net9.0/NetCaseStudy.Domain.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Domain/obj/Debug/net9.0/NetCaseStudy.Domain.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Domain/obj/Debug/net9.0/ref/NetCaseStudy.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Domain/obj/Debug/net9.0/ref/NetCaseStudy.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Domain/obj/Debug/net9.0/refint/NetCaseStudy.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Domain/obj/Debug/net9.0/refint/NetCaseStudy.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Domain/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/bin/Debug/net9.0/NetCaseStudy.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/bin/Debug/net9.0/NetCaseStudy.Application.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/bin/Debug/net9.0/NetCaseStudy.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/bin/Debug/net9.0/NetCaseStudy.Application.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/bin/Debug/net9.0/NetCaseStudy.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/bin/Debug/net9.0/NetCaseStudy.Domain.dll" afterDir="false" />
@@ -62,6 +75,10 @@
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/obj/Debug/net9.0/NetCaseStudy.Infrastructure.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/obj/Debug/net9.0/NetCaseStudy.Infrastructure.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/obj/Debug/net9.0/ref/NetCaseStudy.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/obj/Debug/net9.0/ref/NetCaseStudy.Infrastructure.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/obj/Debug/net9.0/refint/NetCaseStudy.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/obj/Debug/net9.0/refint/NetCaseStudy.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Infrastructure/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/TestUtils/TestDataSeeder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/TestUtils/TestDataSeeder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Api.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Api.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Application.dll" afterDir="false" />
@@ -70,16 +87,21 @@
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Domain.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Infrastructure.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Tests.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Tests.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/bin/Debug/net9.0/NetCaseStudy.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/NetCaseStudy.Tests.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/ref/NetCaseStudy.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/ref/NetCaseStudy.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/refint/NetCaseStudy.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/Debug/net9.0/refint/NetCaseStudy.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.Tests/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetCaseStudy.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/NetCaseStudy.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,14 +112,20 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/Downloads/netcasestudy_pr_pack_nohidden/NetCaseStudy.Api/Infrastructure/Localization/SharedResource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/netcasestudy_pr_pack_nohidden/NetCaseStudy.Api/Infrastructure/Logging/CorrelationIdEnricher.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/netcasestudy_pr_pack_nohidden/NetCaseStudy.Api/Infrastructure/Middlewares/ProblemDetailsMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/netcasestudy_pr_pack_nohidden/NetCaseStudy.Api/Infrastructure/Swagger/AcceptLanguageHeaderOperationFilter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3ac473df69ae4ed5bc93c60d4af4617447400/6e/038087f1/MapperConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7963d2beb05f4e73a3774d3a0f11cd7bf82e00/62/07f824dc/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b8cec6fb23bc404a9c30585d81c749a2291438/1d/cfdeaaba/DbContextServices.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b8cec6fb23bc404a9c30585d81c749a2291438/ba/4ffcc6b2/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/enescigdem/RiderProjects/NetCaseStudy/NetCaseStudy.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="324DNwKDJR6fCtR7x5AajJkvBWV" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
@@ -120,6 +148,9 @@
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
+    ],
     "rider.external.source.directories": [
       "/Users/enescigdem/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
       "/Users/enescigdem/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
@@ -153,6 +184,7 @@
       <option name="presentableId" value="Default" />
       <updated>1756670914930</updated>
       <workItem from="1756670916045" duration="6890000" />
+      <workItem from="1756683620315" duration="3592000" />
     </task>
     <task id="LOCAL-00001" summary="Add Redis caching and health checks, update connection strings, and refactor product commands">
       <option name="closed" value="true" />
@@ -178,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756682987889</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update source link URLs, assembly informational versions, and refactor health check registration">
+      <option name="closed" value="true" />
+      <created>1756683741446</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1756683741447</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +230,7 @@
     <MESSAGE value="Add Redis caching and health checks, update connection strings, and refactor product commands" />
     <MESSAGE value="Add initial implementation of Redis caching service and related tests" />
     <MESSAGE value="Update AutoMapper version to 12.0.1, add Microsoft.CSharp and EntityFrameworkCore.InMemory packages, and enforce authorization on product retrieval endpoints" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update AutoMapper version to 12.0.1, add Microsoft.CSharp and EntityFrameworkCore.InMemory packages, and enforce authorization on product retrieval endpoints" />
+    <MESSAGE value="Update source link URLs, assembly informational versions, and refactor health check registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update source link URLs, assembly informational versions, and refactor health check registration" />
   </component>
 </project>

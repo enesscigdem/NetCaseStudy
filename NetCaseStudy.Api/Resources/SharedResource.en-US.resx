@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <data name="PingMessage" xml:space="preserve">
+    <value>Pong at {0:u}</value>
+  </data>
+    <data name="UnexpectedErrorTitle" xml:space="preserve">
+    <value>Unexpected error occurred</value>
+  </data>
+    <data name="UnexpectedErrorDetail" xml:space="preserve">
+    <value>We could not complete your request. Please try again later.</value>
+  </data>
+</root>

@@ -1,0 +1,30 @@
+root = true
+
+[*.{cs,csx}]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+
+dotnet_diagnostic.SA0001.severity = none
+dotnet_diagnostic.SA1600.severity = suggestion
+dotnet_diagnostic.SA1200.severity = suggestion
+dotnet_diagnostic.SA1413.severity = suggestion
+dotnet_diagnostic.SA1503.severity = suggestion
+
+dotnet_diagnostic.SA1633.severity = none
+
+[NetCaseStudy.Domain/**/*.cs]
+dotnet_diagnostic.SA1201.severity = none
+dotnet_diagnostic.SA1202.severity = none
+dotnet_diagnostic.SA1309.severity = none
+dotnet_diagnostic.SA1101.severity = none
+dotnet_diagnostic.SA1200.severity = none
+dotnet_diagnostic.SA1413.severity = none
+dotnet_diagnostic.SA1503.severity = none
+dotnet_diagnostic.SA1633.severity = none
+
+dotnet_diagnostic.CA1040.severity = none
+dotnet_diagnostic.CA1819.severity = none 
+dotnet_diagnostic.CA2227.severity = none

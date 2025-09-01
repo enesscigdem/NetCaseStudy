@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using NetCaseStudy.Api.Filters;
 using NetCaseStudy.Application.DTOs;
 using NetCaseStudy.Application.Features.Products.Commands;
@@ -73,6 +74,7 @@ public class ProductsController : ControllerBase
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [EnableRateLimiting("WritePolicy")] 
     public async Task<ActionResult<int>> Create([FromBody] CreateProductRequest request)
     {
         var id = await _mediator.Send(new CreateProductCommand(request));
@@ -83,6 +85,7 @@ public class ProductsController : ControllerBase
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [EnableRateLimiting("WritePolicy")] 
     public async Task<IActionResult> Update(int id, [FromBody] CreateProductRequest request)
     {
         var success = await _mediator.Send(new UpdateProductCommand(id, request));
@@ -97,6 +100,7 @@ public class ProductsController : ControllerBase
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [EnableRateLimiting("WritePolicy")] 
     public async Task<IActionResult> Delete(int id)
     {
         var success = await _mediator.Send(new DeleteProductCommand(id));

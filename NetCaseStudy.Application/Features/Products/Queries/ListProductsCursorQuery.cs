@@ -12,7 +12,7 @@ public record ListProductsCursorQuery(
     string? Search = null,
     decimal? MinPrice = null,
     decimal? MaxPrice = null,
-    string? SortBy = "id",   // id | name | price
+    string? SortBy = "id",
     bool Descending = false
 ) : IRequest<CursorPagedResult<ProductDto>>;
 
@@ -41,7 +41,6 @@ public class ListProductsCursorQueryHandler
         if (request.MinPrice.HasValue) q = q.Where(p => p.Price >= request.MinPrice.Value);
         if (request.MaxPrice.HasValue) q = q.Where(p => p.Price <= request.MaxPrice.Value);
 
-        // cursor decode (base64-int)
         int? lastId = null;
         if (!string.IsNullOrEmpty(request.Cursor))
         {
@@ -52,7 +51,6 @@ public class ListProductsCursorQueryHandler
             }
         }
 
-        // sıralama
         IOrderedQueryable<Domain.Entities.Product> ordered = request.SortBy?.ToLower() switch
         {
             "name"  => request.Descending ? q.OrderByDescending(p => p.Name) : q.OrderBy(p => p.Name),
@@ -62,7 +60,6 @@ public class ListProductsCursorQueryHandler
 
         if (lastId.HasValue && (request.SortBy ?? "id").ToLower() == "id")
         {
-            // id bazlı cursor
             if (request.Descending)
                 ordered = (IOrderedQueryable<Domain.Entities.Product>)ordered.Where(p => p.Id < lastId.Value);
             else

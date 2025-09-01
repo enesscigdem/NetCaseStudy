@@ -7,9 +7,6 @@ using NetCaseStudy.Domain.Entities;
 
 namespace NetCaseStudy.Application.Features.Products.Queries;
 
-/// <summary>
-/// Query to retrieve a single product by id.
-/// </summary>
 public record GetProductByIdQuery(int Id) : IRequest<ProductDto?>;
 
 public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductDto?>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <data name="PingMessage" xml:space="preserve">
+    <value>{0:u} tarihinde yanıt: Pong</value>
+  </data>
+    <data name="UnexpectedErrorTitle" xml:space="preserve">
+    <value>Beklenmeyen bir hata oluştu</value>
+  </data>
+    <data name="UnexpectedErrorDetail" xml:space="preserve">
+    <value>İsteğinizi tamamlayamadık. Lütfen daha sonra tekrar deneyin.</value>
+  </data>
+</root>

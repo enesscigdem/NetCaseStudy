@@ -7,9 +7,6 @@ using NetCaseStudy.Domain.Entities;
 
 namespace NetCaseStudy.Application.Features.Products.Queries;
 
-/// <summary>
-/// Query for retrieving products with paging, filtering and sorting.
-/// </summary>
 public record ListProductsQuery(
     int Page = 1,
     int PageSize = 10,
@@ -20,9 +17,6 @@ public record ListProductsQuery(
     bool Descending = false
 ) : IRequest<PagedResult<ProductDto>>;
 
-/// <summary>
-/// Handler for <see cref="ListProductsQuery"/>.
-/// </summary>
 public class ListProductsQueryHandler : IRequestHandler<ListProductsQuery, PagedResult<ProductDto>>
 {
     private readonly IApplicationDbContext _db;
@@ -49,7 +43,6 @@ public class ListProductsQueryHandler : IRequestHandler<ListProductsQuery, Paged
         if (request.MaxPrice.HasValue)
             query = query.Where(p => p.Price <= request.MaxPrice.Value);
 
-        // Sorting
         query = request.SortBy?.ToLower() switch
         {
             "name" => request.Descending ? query.OrderByDescending(p => p.Name) : query.OrderBy(p => p.Name),

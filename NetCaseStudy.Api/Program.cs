@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Text;
 using System.Threading.RateLimiting;
+using System.Globalization;                              
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -13,8 +14,11 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Options;                      
 using Microsoft.IdentityModel.Tokens;
 using NetCaseStudy.Api.Authorization;
+using NetCaseStudy.Api.Infrastructure.Logging;
+using NetCaseStudy.Api.Infrastructure.Middlewares;
 using Serilog;
 using NetCaseStudy.Api.Middlewares;
 using NetCaseStudy.Api.Services;
@@ -24,10 +28,16 @@ using NetCaseStudy.Application.Mapping;
 using NetCaseStudy.Infrastructure.Cache;
 using NetCaseStudy.Infrastructure.Identity;
 using NetCaseStudy.Infrastructure.Persistence;
+using NetCaseStudy.Api.Infrastructure.Swagger;           
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration));
+
+builder.Host.UseSerilog((ctx, lc) =>
+{
+    lc.ReadFrom.Configuration(ctx.Configuration)
+        .Enrich.With<CorrelationIdEnricher>();
+});
 
 var redisConn = builder.Configuration.GetConnectionString("Redis");
 string? connectionString = null;
@@ -56,10 +66,12 @@ else
         .AddRedis(redisConn!, name: "redis");
 
     builder.Services.AddStackExchangeRedisCache(options => { options.Configuration = redisConn; });
-    builder.Services.AddSingleton<StackExchange.Redis.IConnectionMultiplexer>(_ =>
-        StackExchange.Redis.ConnectionMultiplexer.Connect(redisConn));
-    builder.Services.AddScoped<NetCaseStudy.Application.Abstractions.ICacheService,
-        NetCaseStudy.Infrastructure.Cache.RedisCacheService>();
+    if (!string.IsNullOrWhiteSpace(redisConn))
+    {
+        builder.Services.AddSingleton<StackExchange.Redis.IConnectionMultiplexer>(
+            _ => StackExchange.Redis.ConnectionMultiplexer.Connect(redisConn));
+    }
+    builder.Services.AddScoped<ICacheService, RedisCacheService>();
 }
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
@@ -125,19 +137,63 @@ builder.Services.AddVersionedApiExplorer(options =>
     options.SubstituteApiVersionInUrl = true;
 });
 
+builder.Services.AddLocalization(opt => opt.ResourcesPath = "Resources");
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var cultures = new[] { new CultureInfo("en-US"), new CultureInfo("tr-TR") };
+    options.SupportedCultures = cultures;
+    options.SupportedUICultures = cultures;
+    options.DefaultRequestCulture = new("en-US");
+});
+
 builder.Services.AddRateLimiter(options =>
 {
-    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
     {
-        var role = context.User?.IsInRole("Admin") == true ? "Admin" : "User";
-        return RateLimitPartition.GetFixedWindowLimiter(role, _ =>
-            role == "Admin"
-                ? new FixedWindowRateLimiterOptions { PermitLimit = int.MaxValue, QueueProcessingOrder = QueueProcessingOrder.OldestFirst, Window = TimeSpan.FromSeconds(1) }
-                : new FixedWindowRateLimiterOptions { PermitLimit = 50, QueueProcessingOrder = QueueProcessingOrder.OldestFirst, Window = TimeSpan.FromMinutes(1) });
+        var user = httpContext.User;
+        var isAdmin = user?.IsInRole("Admin") ?? false;
+        if (isAdmin)
+            return RateLimitPartition.GetNoLimiter("admin");
+
+        string key = user?.Identity?.IsAuthenticated == true
+            ? (user.FindFirst("sub")?.Value ?? user.Identity!.Name ?? "anon")
+            : (httpContext.Connection.RemoteIpAddress?.ToString() ?? "anon");
+
+        return RateLimitPartition.GetFixedWindowLimiter(key, _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 100,
+            Window = TimeSpan.FromMinutes(1),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        });
+    });
+
+    options.AddPolicy<string>("WritePolicy", context =>
+    {
+        var user = context.User;
+        var isAdmin = user?.IsInRole("Admin") ?? false;
+        if (isAdmin)
+            return RateLimitPartition.GetNoLimiter("admin-write");
+
+        string key = user?.Identity?.IsAuthenticated == true
+            ? (user.FindFirst("sub")?.Value ?? user.Identity!.Name ?? "anon")
+            : (context.Connection.RemoteIpAddress?.ToString() ?? "anon");
+
+        return RateLimitPartition.GetFixedWindowLimiter(key, _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 20,
+            Window = TimeSpan.FromMinutes(1),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        });
     });
 });
 
+
 builder.Services.AddControllers();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -157,6 +213,8 @@ builder.Services.AddSwaggerGen(options =>
                 { Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme, Id = "Bearer" } },
           Array.Empty<string>() }
     });
+
+    options.OperationFilter<AcceptLanguageHeaderOperationFilter>();
 });
 
 var app = builder.Build();
@@ -164,15 +222,11 @@ var app = builder.Build();
 await IdentitySeed.SeedRolesAndAdminAsync(app.Services);
 
 app.UseSerilogRequestLogging();
-app.UseMiddleware<ExceptionHandlingMiddleware>();
 
-app.UseRequestLocalization(options =>
-{
-    var supportedCultures = new[] { "en-US", "tr-TR" };
-    options.SetDefaultCulture("en-US");
-    options.AddSupportedCultures(supportedCultures);
-    options.AddSupportedUICultures(supportedCultures);
-});
+app.UseMiddleware<ProblemDetailsMiddleware>();
+
+var locOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>();
+app.UseRequestLocalization(locOptions.Value);
 
 app.UseRateLimiter();
 app.UseHttpsRedirection();
@@ -191,6 +245,14 @@ if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
             options.SwaggerEndpoint($"/swagger/{desc.GroupName}/swagger.json", desc.GroupName.ToUpperInvariant());
         }
     });
+}
+
+if (Environment.GetEnvironmentVariable("MIGRATE_ON_STARTUP")?
+        .Equals("true", StringComparison.OrdinalIgnoreCase) == true)
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    await db.Database.MigrateAsync();
 }
 
 app.MapControllers();
